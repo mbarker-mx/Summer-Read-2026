@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty Summer Reading 2026</title>
+  <style>
+    :root {
+      --ink: #1f2933;
+      --muted: #667085;
+      --line: #e5e7eb;
+      --paper: #ffffff;
+      --bg: #f6f4ef;
+      --accent: #c8102e;
+      --accent-light: #e5eee8;
+      --gold: #b6893b;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    header {
+      background: linear-gradient(135deg, #c8102e, #a30d25);
+      color: white;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    header p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      color: #eef6ef;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 32px auto 64px;
+    }
+
+    .notice {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--gold);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 24px rgba(31, 41, 51, 0.06);
+    }
+
+    .notice h2 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+    }
+
+    .notice p {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--muted);
+    }
+
+    .section-heading {
+      margin: 40px 0 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .section-heading span {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .book-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(31, 41, 51, 0.06);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .required-card {
+      max-width: 680px;
+    }
+
+    .book-top {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 18px;
+      padding: 22px 22px 12px;
+    }
+
+    .cover {
+      width: 112px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 12px 22px rgba(31, 41, 51, 0.22);
+      background: #ddd;
+    }
+
+    .book-meta h3 {
+      margin: 0 0 6px;
+      font-size: 1.18rem;
+      line-height: 1.2;
+    }
+
+    .author {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.94rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .book-card p.description {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: #3c4754;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.96rem;
+      flex: 1;
+    }
+
+    .actions {
+      padding: 0 22px 22px;
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .button:hover { background: #a30d25; }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.9rem;
+      padding: 16px 24px 36px;
+    }
+
+    @media (max-width: 520px) {
+      .book-top { grid-template-columns: 86px 1fr; }
+      .cover { width: 86px; height: 132px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Faculty Summer Reading 2026</h1>
+    <p>Each faculty member will take home two titles for the summer: one shared read for all faculty and one additional title of your choice from the curated options below.</p>
+  </header>
+
+  <main>
+    <section class="notice">
+      <h2>Shared Full Faculty Read</h2>
+      <p>All faculty will read <em>Fugitive Pedagogy: Carter G. Woodson and the Art of Black Teaching</em> by Jarvis R. Givens. Faculty may then choose one additional title from the options below.</p>
+    </section>
+
+    <section class="grid" aria-label="Required reading">
+      <article class="book-card required-card">
+        <div class="book-top">
+          <img class="cover" src="https://m.media-amazon.com/images/I/612KgjGcXoL._SL1000_.jpg" alt="Book cover for Fugitive Pedagogy by Jarvis R. Givens" />
+          <div class="book-meta">
+            <h3>Fugitive Pedagogy</h3>
+            <p class="author">Jarvis R. Givens</p>
+            <span class="tag">Full Faculty Read</span>
+          </div>
+        </div>
+        <p class="description">Givens examines the tradition of Black education as a form of resistance, focusing on Carter G. Woodson, the founder of Black History Month, and the teachers who carried forward a powerful tradition of “fugitive pedagogy” under Jim Crow.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Fugitive-Pedagogy-Woodson-Teaching-American/dp/0674983682" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+    </section>
+
+    <div class="section-heading">
+      <h2>Choose One Additional Title</h2>
+      <span>Curated options aligned with Diversity, Equity & Inclusion; Teaching & Learning; and Ecology & Sustainability</span>
+    </div>
+
+    <div class="section-heading">
+      <h2>Diversity, Equity & Inclusion</h2>
+    </div>
+    <section class="grid" aria-label="DEI titles">
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/1119839327.01._SX300_.jpg" alt="Book cover for Say More About That by Amber Cabral" />
+          <div class="book-meta">
+            <h3>Say More About That</h3>
+            <p class="author">Amber Cabral</p>
+            <span class="tag">DEI</span>
+          </div>
+        </div>
+        <p class="description">A practical communications guide for speaking up, pushing back, and advocating for yourself and others. Cabral offers tools and strategies for addressing inequitable treatment in school, work, and everyday settings.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Say-More-About-That-Advocate/dp/1119839327" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/0449213447.01._SX300_.jpg" alt="Book cover for The Chosen by Chaim Potok" />
+          <div class="book-meta">
+            <h3>The Chosen</h3>
+            <p class="author">Chaim Potok</p>
+            <span class="tag">DEI · Fiction</span>
+          </div>
+        </div>
+        <p class="description">Set in 1940s Brooklyn, this novel follows the friendship between Reuven Malter and Danny Saunders as they navigate faith, family expectations, tradition, identity, and intellectual independence.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Chosen-Novel-Chaim-Potok/dp/0449213447" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+    </section>
+
+    <div class="section-heading">
+      <h2>Teaching & Learning</h2>
+    </div>
+    <section class="grid" aria-label="Teaching and learning titles">
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/1668023881.01._SX300_.jpg" alt="Book cover for 10 to 25 by David Yeager" />
+          <div class="book-meta">
+            <h3>10 to 25</h3>
+            <p class="author">David Yeager, PhD</p>
+            <span class="tag">Teaching & Learning</span>
+          </div>
+        </div>
+        <p class="description">Developmental psychologist David Yeager explains the science of motivating young people ages 10 through 25, offering practical insights for educators, parents, coaches, managers, and mentors.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/10-25-Motivating-Groundbreaking-Generation_And/dp/1668023881" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/059371671X.01._SX300_.jpg" alt="Book cover for Co-Intelligence by Ethan Mollick" />
+          <div class="book-meta">
+            <h3>Co-Intelligence</h3>
+            <p class="author">Ethan Mollick</p>
+            <span class="tag">AI · Teaching & Learning</span>
+          </div>
+        </div>
+        <p class="description">Mollick explores how to engage with AI as a co-worker, co-teacher, and coach. The book considers AI’s impact on education and work while offering guidance for using it thoughtfully and effectively.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Co-Intelligence-Living-Working-Ethan-Mollick/dp/059371671X" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+    </section>
+
+    <div class="section-heading">
+      <h2>Ecology & Sustainability</h2>
+    </div>
+    <section class="grid" aria-label="Ecology and sustainability titles">
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/0063241536.01._SX300_.jpg" alt="Book cover for Human Nature by Kate Marvel" />
+          <div class="book-meta">
+            <h3>Human Nature</h3>
+            <p class="author">Kate Marvel</p>
+            <span class="tag">Sustainability</span>
+          </div>
+        </div>
+        <p class="description">Climate scientist Kate Marvel blends science and personal reflection to examine climate change through nine emotions, offering a human and deeply felt account of life on a changing planet.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Human-Nature-About-Changing-Planet/dp/0063241536" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/0593597036.01._SX300_.jpg" alt="Book cover for North Woods by Daniel Mason" />
+          <div class="book-meta">
+            <h3>North Woods</h3>
+            <p class="author">Daniel Mason</p>
+            <span class="tag">Ecology · Fiction</span>
+          </div>
+        </div>
+        <p class="description">A sweeping novel centered on a single house in the New England woods, told through the lives of those who inhabit it across centuries. It explores place, memory, nature, and change.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/North-Woods-Novel-Daniel-Mason/dp/0593597036" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+
+      <article class="book-card">
+        <div class="book-top">
+          <img class="cover" src="https://images-na.ssl-images-amazon.com/images/P/039335668X.01._SX300_.jpg" alt="Book cover for The Overstory by Richard Powers" />
+          <div class="book-meta">
+            <h3>The Overstory</h3>
+            <p class="author">Richard Powers</p>
+            <span class="tag">Ecology · Fiction</span>
+          </div>
+        </div>
+        <p class="description">A Pulitzer Prize-winning novel that brings together interlocking stories of people whose lives are transformed by trees, forests, environmental activism, and the living world around them.</p>
+        <div class="actions"><a class="button" href="https://www.amazon.com/Overstory-Novel-Richard-Powers/dp/039335668X" target="_blank" rel="noopener">Learn more on Amazon</a></div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    Faculty Summer Reading 2026 · Please select one additional title to accompany the shared full faculty read.
+  </footer>
+</body>
+</html>
